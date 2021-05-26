@@ -1,7 +1,7 @@
 from dronekit import connect, VehicleMode, Command
 import time
 from pymavlink import mavutil
-
+# 请务必在拟真环境中测试后再运用在真实无人机上！
 CW = -1
 CCW = 1
 vehicle = connect("/dev/ttyUSB0", baud=57600, wait_ready=False)
