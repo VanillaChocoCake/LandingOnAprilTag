@@ -167,11 +167,11 @@ Mat Handle_Emergency(Mat frame, int width, int height)
                 1);
         if(Emergency_Message_Sent == 0)
         {
-            if(access("/home/sunpeihan/Desktop/DataTransmission/data.txt", F_OK) != -1)
+            if(access("/path/DataTransmission/data.txt", F_OK) != -1)
             {
-                remove("/home/sunpeihan/Desktop/DataTransmission/data.txt");
+                remove("/path/DataTransmission/data.txt");
             }
-            FILE *fp=fopen("/home/sunpeihan/Desktop/DataTransmission/data.txt", "w+");
+            FILE *fp=fopen("/path/DataTransmission/data.txt", "w+");
             fprintf(fp, "-666 -666 -666\n");
             fclose(fp);
             Emergency_Message_Sent = 1;
@@ -182,9 +182,9 @@ Mat Handle_Emergency(Mat frame, int width, int height)
 
 void remove_data_txt()
 {
-    if(access("/home/sunpeihan/Desktop/DataTransmission/data.txt", F_OK) != -1)
+    if(access("/path/DataTransmission/data.txt", F_OK) != -1)
     {
-        remove("/home/sunpeihan/Desktop/DataTransmission/data.txt");
+        remove("/path/DataTransmission/data.txt");
     }
 }
 
@@ -196,22 +196,22 @@ void write_data(int degree, int Horizontal_Distance, int Delta_Height)
         return;
     }
     if(write_time >= 30
-    && access("/home/sunpeihan/Desktop/DataTransmission/data.txt", F_OK) != -1)
+    && access("/path/DataTransmission/data.txt", F_OK) != -1)
     {
         remove_data_txt();
         write_time = 0;
     }
-    if(access("/home/sunpeihan/Desktop/DataTransmission/data.txt", F_OK) == -1)
+    if(access("/path/DataTransmission/data.txt", F_OK) == -1)
     {
         write_time += 1;
-        FILE *fp=fopen("/home/sunpeihan/Desktop/DataTransmission/data.txt", "w+");
+        FILE *fp=fopen("/path/DataTransmission/data.txt", "w+");
         fprintf(fp, "%d %d %d\n",degree, Horizontal_Distance, Delta_Height);
         fclose(fp);
     }
     else
     {
         write_time += 1;
-        FILE *fp=fopen("/home/sunpeihan/Desktop/DataTransmission/data.txt", "at+");
+        FILE *fp=fopen("/path/DataTransmission/data.txt", "at+");
         fprintf(fp, "%d %d %d\n",degree, Horizontal_Distance, Delta_Height);
         fclose(fp);
     }
