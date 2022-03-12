@@ -27,7 +27,7 @@ print("无人机成功解锁，准备起飞...")
 vehicle.groundspeed = 0.1
 vehicle.airspeed = 0.1
 first_detect = 1  # 一个判断是否是第一次收到来自图传处理完毕的数据的变量
-data_path = "/home/sunpeihan/Desktop/DataTransmission/data.txt"
+data_path = "/path/DataTransmission/data.txt"
 home_lat = vehicle.location.global_relative_frame.lat
 home_lon = vehicle.location.global_relative_frame.lon
 home_point = LocationGlobalRelative(home_lat, home_lon, 4)
